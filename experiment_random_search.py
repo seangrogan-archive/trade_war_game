@@ -43,12 +43,7 @@ def test(i, n_opp, most_wins, most_ties, best_vals):
     v1 = random.randint(0, 100) / 100.0
     p1_pol = [f1, i1, v1]
     for i in range(n_opp):
-        f2 = random.randint(0, 100) / 100.0
-        i2 = random.randint(0, 100) / 100.0
-        v2 = random.randint(0, 100) / 100.0
-        p2_pol = [f2, i2, v2]
-        p1v, p2v = experiment(p1_pol, p2_pol)
-        val.append(p1v)
+        p1v, p2v = game(val, p1_pol)
         if p1v > p2v:
             win += 1
         if p1v == p2v:
@@ -72,3 +67,13 @@ def test(i, n_opp, most_wins, most_ties, best_vals):
         best_vals["tie"] = tie
         best_vals["avg"] = avg
         print("  Best Value ", best_vals["policy"], best_vals["win"], best_vals["tie"], best_vals["avg"])
+
+
+def game(val, p1_pol):
+    f2 = random.randint(0, 100) / 100.0
+    i2 = random.randint(0, 100) / 100.0
+    v2 = random.randint(0, 100) / 100.0
+    p2_pol = [f2, i2, v2]
+    p1v, p2v = experiment(p1_pol, p2_pol)
+    val.append(p1v)
+    return p1v, p2v
