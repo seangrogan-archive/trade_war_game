@@ -133,5 +133,5 @@ def experiment_between_def_types():
 
 
 if __name__ == '__main__':
-    random_search_for_better_policy(100, 1000)
+    random_search_for_better_policy(10000, 10000)
     # main()
