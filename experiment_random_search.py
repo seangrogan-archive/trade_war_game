@@ -1,4 +1,5 @@
 from trade_war_game import *
+import multiprocessing as mp
 
 
 def random_search_for_better_policy(n_test=10000, n_opp=10000):
@@ -24,8 +25,15 @@ def random_search_for_better_policy(n_test=10000, n_opp=10000):
     best_vals["tie"] = 0
     best_vals["avg"] = 0
 
-    for i in range(n_test):
-        test(i, n_opp, most_wins, most_ties, best_vals)
+    #for i in range(n_test):
+        #test(i, n_opp, most_wins, most_ties, best_vals)
+
+    pool = mp.Pool(processes=mp.cpu_count())
+    result = [pool.apply(test, args=(i, n_opp, most_wins, most_ties, best_vals)) for i in range(n_test)]
+    output = [p.get() for p in result]
+    print(output)
+
+
 
     print()
     print("Most Wins  ", most_wins["policy"], most_wins["win"], most_wins["tie"], most_wins["avg"])
