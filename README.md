@@ -20,3 +20,5 @@ What does this mean?
 Well, being unfriendly (i.e. defecting all the time) will keep you from loosing to your opponent; however, you will end up with a lower value versus being cooperative.  If you mimc your opponent most of the time, you will tie them most of the time.  Finally, even though you may never come out on top, being friendly most of the time will give the player the highest value (on average).
 
 Note, the best possible value one can get is if they defect 100% of the time and their opponent cooperates 100% of the time.  That value is 2500 (using the base case from the article and 100 turns).  If both players cooperate 100% of the time, they both can expect $1500.
+
+### Multiprocessing Results

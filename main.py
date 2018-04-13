@@ -1,5 +1,6 @@
 from player import *
 from experiment_random_search import *
+import time
 
 
 def main():
@@ -7,7 +8,7 @@ def main():
     default_types()
     experiment_between_def_types()
 
-
+'''
 def random_search_for_better_policy(n_test=10000, n_opp=10000):
     """
     This function will test a random policy against another random policy
@@ -72,10 +73,10 @@ def random_search_for_better_policy(n_test=10000, n_opp=10000):
             print("  Best Value ", best_vals["policy"], best_vals["win"], best_vals["tie"], best_vals["avg"])
 
     print()
-    print("Most Wins  ", most_wins["policy"], most_wins["win"], most_wins["tie"], most_wins["avg"])
-    print("Most Ties  ", most_ties["policy"], most_ties["win"], most_ties["tie"], most_ties["avg"])
-    print("Best Value ", best_vals["policy"], best_vals["win"], best_vals["tie"], best_vals["avg"])
-
+    print("Most Wins  ", most_wins["policy"], "\t", most_wins["win"], "\t", most_wins["tie"], "\t", most_wins["avg"])
+    print("Most Ties  ", most_ties["policy"], "\t", most_ties["win"], "\t", most_ties["tie"], "\t", most_ties["avg"])
+    print("Best Value ", best_vals["policy"], "\t", best_vals["win"], "\t", best_vals["tie"], "\t", best_vals["avg"])
+'''
 
 def default_types():
     pol1 = [1, 0, 0]  # Cooperator
@@ -133,5 +134,20 @@ def experiment_between_def_types():
 
 
 if __name__ == '__main__':
-    random_search_for_better_policy(10000, 10000)
-    # main()
+    n_me, n_them = 100, 100
+    begin = time.clock()
+    random_search_for_better_policy(n_me, n_them)
+    a = time.clock()-begin
+    print("time: ", a)
+    begin = time.clock()
+    random_search_for_better_policy(n_me, n_them, 2)
+    b = time.clock() - begin
+    print("time: ", b)
+    begin = time.clock()
+    random_search_for_better_policy(n_me, n_them, False)
+    c = time.clock() - begin
+    print("time: ", c)
+    print()
+    print("Multiprocess  : ", a)
+    print("Async Multi   : ", b)
+    print("Single Thread : ", c)
