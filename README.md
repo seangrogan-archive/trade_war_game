@@ -22,3 +22,9 @@ Well, being unfriendly (i.e. defecting all the time) will keep you from loosing 
 Note, the best possible value one can get is if they defect 100% of the time and their opponent cooperates 100% of the time.  That value is 2500 (using the base case from the article and 100 turns).  If both players cooperate 100% of the time, they both can expect $1500.
 
 ### Multiprocessing Results
+
+I guess it's quicker to run a single process then a multi-process in this computation.
+
+Multiprocess  :  9.537719189674151
+Async Multi   :  8.053422612054545
+Single Thread :  6.81340987749272
